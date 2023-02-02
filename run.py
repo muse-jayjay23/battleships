@@ -27,9 +27,7 @@ def print_board(board):
     print('   A B C D E F G H')
     print('   ---------------')
     row_number = 1
-    """
-    This iterates through each row in the board and joins the pipes
-    """
+    #This iterates through each row in the board and joins the pipes
     for row in board:
         print("%d|%s|" % (row_number, "|".join(row)))
         row_number += 1
@@ -42,18 +40,33 @@ def create_ships(board):
             ship_row, ship_column = randint(0,7), randint(0,7)
         board[ship_row][ship_column] = "X"
 
+
+
+#May be an issue if user inputs nothing
+#maybe try try and accept instead?
+
+
+
 def get_ship_location():
-    pass
+    row = input("Please enter a ship row, 1-8")
+    #In case user using inorrect number or letter
+    while row not in '12345678':
+        print("Please enter a valid row and try again...")
+        row = input("Please enter a ship row, 1-8")
+    #.upper used in case user inputs lowercase letters
+    column = input("Please enter a ship column, A-H").upper()
+    while column not in 'ABCDEFGH':
+        print("Please enter a valid column and try again...")
+        column = input("Please enter a ship column, A-H").upper()
+    return int(row) - 1, let_to_num[column]
 
 
 def count_hit_ships():
     pass
 
 
-"""
-#game process
-create_ships()
-turns = 10
-while turns > 0:
-"""
 
+#game process
+#turns = 10
+#create_ships()
+#while turns > 0:
